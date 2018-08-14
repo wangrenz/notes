@@ -94,7 +94,7 @@ wang@localhost$ ldd fvcom
 速度达到了56Gb/s。并行程序执行时的通信结构有如下方式：`shm|dapl|tcp|tmi|ofa|ofi`。shm为共享内存，tcp为以太网，ofa为IB网络。
 
 以`Intel MPI`为例。`FVCOM`模式运行时，设置环境变量`export I_MPI_FABRICS=shm:ofa`。节点内通信方式为共享内存，节点间为IB网络。
-经测试这种搭配是效率最高的。`WRF`模式对这个设置不敏感，`I_MPI_FABRICS=shm:ofa`和`I_MPI_FABRICS=ofa`速度基本一直，后者为节点内，节点间都用IB网络。
+经测试这种搭配是效率最高的。`WRF`模式对这个设置不敏感，`I_MPI_FABRICS=shm:ofa`和`I_MPI_FABRICS=ofa`速度基本一致，后者为节点内，节点间都用IB网络。
 
 #### 4 PBS作业系统
 常用的命令，适用于PBS-Pro,torque。
