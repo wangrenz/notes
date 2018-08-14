@@ -113,7 +113,7 @@ wang@localhost$ ldd fvcom
 
 3. `showq`
 
-查看作业状态，为maui软件中命令
+查看作业状态，为maui软件中的命令
 
 4. `qsub`
 
