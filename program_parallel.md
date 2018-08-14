@@ -125,4 +125,4 @@ wang@localhost$ ldd fvcom
 
 5. `qdel`
 
-删除作业，`qdel 作业号`
+删除作业，`qdel + 作业号`
