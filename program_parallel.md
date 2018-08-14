@@ -5,10 +5,10 @@
 测试出一个计算速度最快，使用核数适中的方案。
 
 #### 1 编译器使用
-现在大部分超算都是`Intel`处理器，而`Intel`编译器针对它做了一定优化。所以最好使用`Intel compiler`。但是部分版本`Intel compiler`编译出的模式存在一些问题，比如运行时`core dump`，以及并行效率不高等等。
-所以建议使用最新update版本，比如`2017update5,2018update3`等。对于一些必要的库，如`hdf5,netcdf`。我的想法是静态编译进去，这样模式很容易迁移到其他集群上去。
-不用去安装编译器和库来重新编译（前提是glibc一致）。具体做法为：
+现在大部分超算都是`Intel`处理器，而`Intel`编译器针对它做了一定优化。但是部分版本`Intel compiler`编译出的模式存在一些问题，比如运行时`core dump`，以及并行效率不高等等。所以建议使用最新update版本，比如`2017update5,2018update3`等。对于一些必要的库，如`hdf5,netcdf`。可以静态编译进去，这样模式很容易迁移到其他集群上去。不用去安装编译器和库来重新编译（前提是glibc一致）。具体做法为：
+
 1. `WRF`模式
+
 修改`configure.wrf`中的`LIB_EXTERNAL`，改为如下形式：
 ```bash
 LIB_EXTERNAL    = \
@@ -43,6 +43,7 @@ wang@localhost$ ldd wrf.exe
 ```
 
 1. `FVCOM`模式
+
 思路和`WRF`模式编译一致，链接时写静态库的全路径。具体做法如下：
 修改`make.inc`中的`IOLIBS`：
 ```bash
