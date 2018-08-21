@@ -104,10 +104,14 @@ wang@localhost$ ldd fvcom
 
 * `Intel MPI`运行参数。
 
+`version:2018update3`
+
 `FVCOM`模式运行时，设置环境变量`export I_MPI_FABRICS=shm:ofa`。节点内共享内存，节点间IB网络。
 经测试这种搭配是效率最高的。`WRF`模式对这个设置不敏感，`I_MPI_FABRICS=shm:ofa`和`I_MPI_FABRICS=ofa`速度基本一致，后者为节点内，节点间都用IB网络。
 
 * `OpenMPI`运行参数。
+
+`version:2.1.5`
 
 OpenMPI文档中讲，从v1.8系列开始，`vader BTL`就替代了`sm BTL`，这两者都是节点间共享内存通信。测试发现`vader BTL`速度要快一些。
 ```bash
@@ -119,7 +123,7 @@ mpirun -np 20 --mca btl ^tcp,openib  ./a.out
 ```
 即不包含`tcp`方式。
 
-`OpenMPI`默认是根据网络拓扑关系来自动识别并行的通信方式，所以一般不用指定通信方式相关参数。
+`OpenMPI`默认是根据网络拓扑关系来自动识别并行的通信方式，一般不用指定相关参数。
 
 #### 4 PBS作业系统
 常用的命令，适用于PBS-Pro,torque。
