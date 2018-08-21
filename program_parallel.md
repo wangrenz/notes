@@ -113,7 +113,7 @@ wang@localhost$ ldd fvcom
 
 `version:2.1.5`
 
-OpenMPI文档中讲，从v1.8系列开始，`vader BTL`就替代了`sm BTL`，这两者都是节点间共享内存通信。测试发现`vader BTL`速度要快一些。
+OpenMPI文档中讲，从v1.8系列开始，`vader BTL`就替代了`sm BTL`，这两者都是节点内共享内存通信。测试发现`vader BTL`速度要快一些。
 ```bash
 mpirun -np 20 --mca btl vader,openib  ./a.out
 ```
