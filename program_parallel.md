@@ -121,9 +121,9 @@ mpirun -np 20 --mca btl vader,openib  ./a.out
 ```bash
 mpirun -np 20 --mca btl ^tcp,openib  ./a.out
 ```
-即不包含`tcp`方式。
+即不包含`tcp`方式。`OpenMPI`默认是根据网络拓扑关系来自动识别并行的通信方式，一般不用指定相关参数。
 
-`OpenMPI`默认是根据网络拓扑关系来自动识别并行的通信方式，一般不用指定相关参数。
+最后想说的是，`Intel MPI`和`Open MPI`执行标准都一样，所以相同编译器和通信方式下，这两个`MPI`库的计算速度相差很小。
 
 #### 4 PBS作业系统
 常用的命令，适用于PBS-Pro,torque。
