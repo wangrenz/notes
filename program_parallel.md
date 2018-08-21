@@ -42,7 +42,7 @@ wang@localhost$ ldd wrf.exe
         /lib64/ld-linux-x86-64.so.2 (0x00002b5ff2cb6000)
 ```
 
-1. `FVCOM`模式
+2. `FVCOM`模式
 
 思路和`WRF`模式编译一致，链接时写静态库的全路径。具体做法如下：
 修改`make.inc`中的`IOLIBS`：
@@ -102,8 +102,24 @@ wang@localhost$ ldd fvcom
 有用的命令：`ibstat, ibstatus, ip addr, ip link`
 
 
-以`Intel MPI`为例。`FVCOM`模式运行时，设置环境变量`export I_MPI_FABRICS=shm:ofa`。节点内共享内存，节点间IB网络。
+* `Intel MPI`运行参数。
+
+`FVCOM`模式运行时，设置环境变量`export I_MPI_FABRICS=shm:ofa`。节点内共享内存，节点间IB网络。
 经测试这种搭配是效率最高的。`WRF`模式对这个设置不敏感，`I_MPI_FABRICS=shm:ofa`和`I_MPI_FABRICS=ofa`速度基本一致，后者为节点内，节点间都用IB网络。
+
+* `OpenMPI`运行参数。
+
+OpenMPI文档中讲，从v1.8系列开始，`vader BTL`就替代了`sm BTL`，这两者都是节点间共享内存通信。测试发现`vader BTL`速度要快一些。
+```bash
+mpirun -np 20 --mca btl vader,openib  ./a.out
+```
+即只使用`vader,openib`通信方式。如果不使用某一方式，用`^`指定。
+```bash
+mpirun -np 20 --mca btl ^tcp,openib  ./a.out
+```
+即不包含`tcp`方式。
+
+`OpenMPI`默认是根据网络拓扑关系来自动识别并行的通信方式，所以一般不用指定通信方式相关参数。
 
 #### 4 PBS作业系统
 常用的命令，适用于PBS-Pro,torque。
