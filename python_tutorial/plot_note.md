@@ -19,5 +19,4 @@ clb.ax.tick_params(axis='y', length=0., width=0.3,direction='in',labelsize=6)
 clb = plt.colorbar(im,  cax=inset_axes(ax, width="2.8%", height="68%", loc=3),extend='both',\ 
     extendrect=True, extendfrac='auto', ) # extendrect=True,
 ```
-
-![image](https://github.com/wangrenz/notes/blob/master/python_tutorial/figures/pm25_square.png)
+<div align=center><img src="https://github.com/wangrenz/notes/blob/master/python_tutorial/figures/pm25_square.png" width="70%" /></div>
