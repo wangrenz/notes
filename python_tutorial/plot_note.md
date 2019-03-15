@@ -12,9 +12,11 @@ clb = plt.colorbar(im,  cax=inset_axes(ax, width="2.8%", height="68%", loc=3),ex
     extendfrac='auto', ) # extendrect=True,
 clb.ax.tick_params(axis='y', length=0., width=0.3,direction='in',labelsize=6)  
 ```
+![image](https://github.com/wangrenz/notes/blob/master/python_tutorial/figures/pm25_tri.png)
 
 设置为矩形
 ```python
 clb = plt.colorbar(im,  cax=inset_axes(ax, width="2.8%", height="68%", loc=3),extend='both',\ 
     extendrect=True, extendfrac='auto', ) # extendrect=True,
 ```
+![image](https://github.com/wangrenz/notes/blob/master/python_tutorial/figures/pm25_square.png)
